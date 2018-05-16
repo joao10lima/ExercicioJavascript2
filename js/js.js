@@ -1,5 +1,6 @@
-let myObj;
 
+function gerarTabela(){
+let myObj;
 
 requisitar = new XMLHttpRequest();
 requisitar.onreadystatechange = function() {
@@ -21,4 +22,36 @@ requisitar.onreadystatechange = function() {
     }
 };
 requisitar.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
-requisitar.send(); 
+requisitar.send();
+}
+
+function alterarUsu(){
+	
+	let myObj;
+
+requisitar = new XMLHttpRequest();
+requisitar.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+		let myObj = JSON.parse(this.responseText);
+		
+		
+		let idAlteracao = document.getElementById("id").value;
+		
+		for (let x in myObj) {
+            if(idAlteracao == myObj[x].id)
+			{
+				myObj[x].name = document.getElementById("nome").value;
+				myObj[x].username = document.getElementById("nomeUsu").value;
+				myObj[x].address.city = document.getElementById("cidade").value;
+				myObj[x].company.name = document.getElementById("nomeEmpresa").value;
+				
+				$('#alerta').show();
+			}				
+        }
+		
+    }
+};
+requisitar.open('PATCH', 'https://jsonplaceholder.typicode.com/users', true);
+requisitar.send(myObj);
+}
