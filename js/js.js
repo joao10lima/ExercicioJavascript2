@@ -10,7 +10,7 @@ function gerarTabela(){
 				 txt += '<table border="1"  class="table"> <tr> <th scope="col">Nome</th> <th scope="col">ID</th> <th scope="col">Nome do usuário</th> <th scope="col">Cidade</th> <th scope="col">Nome da empresa</th> </tr>';
 				
             for (let x in myObj) {
-                txt += `<tr><td>${myObj[x].name}</td> <td>${myObj[x].id}</td><td>${myObj[x].username}</td><td>${myObj[x].address.city}</td> <td>${myObj[x].company.name}</td> <td> <button  type="hidden" onclick="editarP(${myObj[x].id});" >Alterar</button></td>  </tr>`;
+                txt += `<tr><td>${myObj[x].name}</td> <td>${myObj[x].id}</td><td>${myObj[x].username}</td><td>${myObj[x].address.city}</td> <td>${myObj[x].company.name}</td> <td> <button  type="button" onclick="editarP(${myObj[x].id});" >Alterar</button></td>  </tr>`;
             }
 
 				 txt += '</table>';
